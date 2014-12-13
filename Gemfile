@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
 
+ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'sqlite3', group: :development
 gem 'sass-rails', '~> 4.0.0'
@@ -11,6 +11,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
+gem 'carrierwave'
+gem 'fog'
+gem 'figaro'
+gem 'mini_magick'
 
 
 group :doc do
