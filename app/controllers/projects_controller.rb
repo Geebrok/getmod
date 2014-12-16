@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+
 
   # GET /projects
   # GET /projects.json
@@ -15,6 +17,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+
   end
 
   # GET /projects/1/edit
@@ -25,6 +28,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @projects.user_id = current_user.id
 
     respond_to do |format|
       if @project.save
