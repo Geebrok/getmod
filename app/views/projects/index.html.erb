@@ -1,13 +1,13 @@
-<h1>Listing projects</h1>
+<h1>Latest projects</h1>
 
-<table class="table table-hover">
+<table class="table table-default">
   <thead>
     <tr>
       <th>Image</th>
       <th>Name</th>
       <th>Title</th>
       <th>Description</th>      
-      <th></th>
+      <th>User</th>
       <th></th>
     </tr>
   </thead>
@@ -15,17 +15,22 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= image_tag project.image_url %></td>
+        <td><%= link_to image_tag(project.image.url), project %></td>
         <td><%= project.name %></td>
         <td><%= project.title %></td>
-        <td><%= project.description %></td>        
-        <td><%= link_to 'Show', project, class: "btn btn-link" %></td>
-        <td><%= link_to 'Edit', edit_project_path(project), class: "btn btn-link" %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+        <td><%= project.description %></td>
+        <td><%= project.user_id %></td>
+
+        <% if user_signed_in? && current_user %>
+            <td><%= link_to 'Show', project, class: "btn btn-link" %></td>
+            <td><%= link_to 'Edit', edit_project_path(project), class: "btn btn-link" %></td>
+            <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 
 <br>
 
