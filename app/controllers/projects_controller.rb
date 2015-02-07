@@ -2,18 +2,16 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
-
-
-
   # GET /projects,
   # GET /projects.json
   def index
-    @projects = Project.all.order("created_at DESC")
+    @projects = Project.all.order("created_at ASC")
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @posts = Post.where(project_id: @project.id).order("created_at DESC")
   end
 
   # GET /projects/new

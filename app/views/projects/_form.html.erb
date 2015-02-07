@@ -12,12 +12,12 @@
 	<% end %>
 
 	<div class="form-group">
-		<%= f.label :Name %>
+		<%= f.label :Project_Name %>
 		<%= f.text_field :name, class: "form-control" %>
 	</div>
 
 	<div class="form-group">
-		<%= f.label :Title %>
+		<%= f.label :Project_Title %>
 		<%= f.text_field :title, class: "form-control" %>
 	</div>
 
@@ -27,11 +27,11 @@
 	</div>
 
 	<div class="form-group">
-		<%= f.label :Description %>
+		<%= f.label :Write_a_brief_description_of_your_project %>
 		<%= f.text_area :description, class: "form-control", rows: 8 %>
 	</div>
 
-			<% if @project.user_id %>      
+			<% if @project.user_id %>
 				<div class="form-group">
 					<%= f.label :current_project_image %></br>
 					<%= image_tag @project.image_url %>
@@ -45,7 +45,7 @@
 					<%= f.label :project_image %>
 					<%= f.file_field :image %>
 				</div>
-			<% end %>    
+			<% end %>
 			 
 	<div class="actions">
 		<%= f.submit class: "btn btn-success" %>

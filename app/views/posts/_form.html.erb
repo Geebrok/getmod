@@ -15,14 +15,28 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
   </div>
+
   <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body, class: "form-control", rows: 5 %>
   </div>
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
+
+    <% if @post.image_url %>
+      <div class="form-group">
+        <%= f.label :current_image %><br />
+        <%= image_tag @post.image_url %>
+      </div>
+      <div class="form-group">
+        <%= f.label :change_image %>
+        <%= f.file_field :image %>
+      </div>
+    <% else %>
+      <div class="form-group">
+        <%= f.label :add_image %>
+        <%= f.file_field :image %>
+      </div>
+    <% end %>
+
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>
